@@ -1,0 +1,1 @@
+A music searching webapp using Artist as input query build on react.
