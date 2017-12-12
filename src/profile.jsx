@@ -6,7 +6,7 @@ class Profile extends Component {
         let artist = {
             name: '',
             stats: {listeners: ''},
-            image: [{'#text': ''}, {'#text': ''}, {'#text': ''}, {'#text': ''}, {'#text': ''}],
+            image: [{'#text': null}, {'#text': null}, {'#text': null}, {'#text': null}, {'#text': null}],
             tags: {tag: []}
         };
         if(this.props.artist !== null) {
@@ -14,29 +14,31 @@ class Profile extends Component {
         }
 
         return(
-            <div>
+            <div className="profile">
                 <img 
                     alt="Profile"
                     className="profile-img"
                     src={artist.image[4]['#text']}
                 />
-                <div>{artist.name}</div>
-                <div>{artist.stats.listeners}</div>
-                <div>
-                    {
-                       artist.tags.tag.map((tag, k) => {
-                            if(tag !== artist.tags.tag[artist.tags.tag.length-1]) {
-                                var tagName = " " + tag.name + ","; 
-                            }
-                            else {
-                                var tagName = " " + tag.name;
-                            }
-                            //console.log(tag);
-                            return (
-                                <span key = {k}>{tagName}</span>
-                            )
-                       }) 
-                    }
+                <div className="profile-info">
+                    <div className="profile-name">{artist.name}</div>
+                    <div className="profile-listeners">{artist.stats.listeners} Listeners</div>
+                    <div className="profile-tags">
+                        {
+                        artist.tags.tag.map((tag, k) => {
+                                if(tag !== artist.tags.tag[artist.tags.tag.length-1]) {
+                                    var tagName = " " + tag.name + ","; 
+                                }
+                                else {
+                                    tagName = " " + tag.name;
+                                }
+                                //console.log(tag);
+                                return (
+                                    <span key = {k}>{tagName}</span>
+                                )
+                        }) 
+                        }
+                    </div>
                 </div>
             </div>
         )
